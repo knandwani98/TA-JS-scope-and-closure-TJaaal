@@ -18,6 +18,11 @@ function multiplyBy5(n) {
 }
 let numbersAddedFive = multiplyArrayByN(marks, addFive);
 let numbersMultipliedBy5 = multiplyArrayByN(marks, multiplyBy5);
+
+
+//  multiplyArrayByN is a HOF
+// addFive is cb
+// multiplyBy5 is cb
 ```
 
 2. Create the execution context diagram of the above code snippet
