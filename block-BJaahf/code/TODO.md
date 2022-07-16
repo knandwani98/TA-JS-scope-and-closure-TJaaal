@@ -10,8 +10,10 @@
 **You can use normal for loop for this function**
 
 ```js
-function loop() {
-  // Your code goes here
+function loop(startValue, testFn, updateFn, bodyFn) {
+  for(let n = startValue; testFn; updateFn) {
+    return bodyFn(n);
+  }
 }
 
 loop(
