@@ -50,8 +50,7 @@ reduce(nums, add, 0); //-> 8
 
 ```js
 function intersection(...arrays) {
-  let arr = arrays;
-  return arr.reduce((a,b) => a.filter(x => b.includes(x)));
+  return arrays.reduce((a,b) => a.filter(x => b.includes(x)));
 }
 // Test
 console.log(
