@@ -174,13 +174,14 @@ The function `schedule` will execute the function at first index after the value
 
 ```js
 function schedule(str, time) {
-  if(str.length == time.length) {
+  if(str.length !== time.length) {
+      alert(`invalid input`);
+      return;
+  } 
+  else {
     for (let i = 0; i < str.length; i++) {
       setTimeout(str[i], time[i] * 1000);
     }
-  } 
-  else {
-    alert(`invalid input`);
   }
 }
 
