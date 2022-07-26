@@ -74,7 +74,20 @@ To build the object, `objOfMatchesWithArray` will test each element of the first
 The final output from the third array will be matched agains the same indexed element of second array. If there is a match, the element from the first array becomes a key in an object, and the element from the second array becomes the corresponding value.
 
 ```js
-function objOfMatchesWithArray(array1, array2, callback) {}
+function objOfMatchesWithArray(array1, array2, callback) {
+  let obj = {}, newArr = [];
+  array1.forEach(x => {
+    return newArr.push(callback.reduce((total, elm) => {
+      return total = elm(total);
+    }, x));
+  })
+  for (let i = 0; i < array2.length; i++) {
+    if (newArr[i] === array2[i]) {
+      obj[i] = array2[i];
+    }
+  } 
+  return obj;
+}
 
 // TEST
 console.log(
@@ -105,7 +118,20 @@ To build the object, `objectWithArrayValues` will pass each value of the first a
 In the final object the key will be the value form the first array like `hi` and value will be an array of values returned from each function like `['HI', 'Hi', 'HiHi']`
 
 ```js
-function objOfMatchesWithArray(array1, array2, callback) {}
+function objOfMatchesWithArray(array1, callback) {
+    let obj = {};
+  let arr = array1.map(x => {
+    return callback.map(cb => { 
+      return cb(x);
+    })
+  })
+
+  for(let i = 0; i < array1.length; i++) {
+    obj[array1[i]] = arr[i];
+  }
+
+  return obj;
+}
 
 // TEST
 console.log(
@@ -147,7 +173,16 @@ Create a function named `schedule` which accept two arguments an array of functi
 The function `schedule` will execute the function at first index after the value in value on first index in second array. i.e execute `sayHi` after `1` second and `sayHello` after `2` second.
 
 ```js
-function schedule() {}
+function schedule(str, time) {
+  if(str.length == time.length) {
+    for (let i = 0; i < str.length; i++) {
+      setTimeout(str[i], time[i] * 1000);
+    }
+  } 
+  else {
+    alert(`invalid input`);
+  }
+}
 
 function sayHi() {
   console.log('Hi');
