@@ -46,12 +46,12 @@ log(); // return undefinde (can't be called twice)
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters
 
 ```js
-function once(...para) {
+function once(...n) {
   let done = 1;
   return () => {
     if (done !== 0) {
-      let firstElm = para.shift();
-      firstElm(para.join(" "));
+      let firstElm = n.shift();
+      firstElm(n.join(" "));
       done--;
     };
   }
