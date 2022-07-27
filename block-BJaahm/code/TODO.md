@@ -1,0 +1,37 @@
+1. Construct a function intersection that compares input arrays and returns a new array with elements found in all of the inputs. You can only use reduce method to do this.
+
+```js
+function intersection(...arrays) {
+  return arrays.reduce((arr1, arr2) => arr1.filter(elm => arr2.includes(elm)))
+}
+
+// Test
+console.log(
+  intersection(
+    [5, 10, 15, 20],
+    [15, 88, 1, 5, 7],
+    [1, 10, 15, 5, 20]
+  )
+); // should log: [5, 15]
+```
+
+2. Construct a function `union` that compares input arrays and returns a new array that contains all elements. If there are duplicate elements, only add it once to the new array. Preserve the order of the elements starting from the first element of the first input array. You can only use reduce method to do this.
+
+```js
+function union(...arrays) {
+  return arrays.reduce((arr1, arr2) => {
+    arr2.filter(elm => {
+      if (!arr1.includes(elm)) {
+        arr1.push(elm);
+      }
+    })
+    return arr1;
+  }, [])
+}
+
+// Test
+console.log(
+  union([5, 10, 15], [15, 88, 1, 5, 7], [100, 15, 10, 1, 5])
+);
+// should log: [5, 10, 15, 88, 1, 7, 100]
+```
