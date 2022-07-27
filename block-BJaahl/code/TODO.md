@@ -2,11 +2,11 @@
 
 ```js
 function once(cb) {
-  let done = false;
+  let done = 1;
   return () => {
-    if (!done) {
-      done = true;
-      return cb();
+    if (done !== 0)  {
+      cb();
+      done--;
     }
   }
 }
@@ -24,11 +24,11 @@ log(); // return undefinde (can't be called twice)
 
 ```js
 function once(cb,value) {
-  let done = false;
+  let done = 1;
   return () => {
-    if (!done) {
-      done = true;
-      return cb(value);
+    if (done !== 0) {
+      done--;
+      cb(value);
     }
   }
 }
@@ -47,12 +47,12 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest
 
 ```js
 function once(...para) {
-  let done = false;
+  let done = 1;
   return () => {
-    if (!done) {
-      done = true;
+    if (done !== 0) {
       let firstElm = para.shift();
       firstElm(para.join(" "));
+      done--;
     };
   }
 }
