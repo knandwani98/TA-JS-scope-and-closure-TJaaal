@@ -69,8 +69,8 @@ function createCache(cb, str) {
   return (ps) => {
     if (ps !== str ) {
       return obj[ps] = cb(ps);
-    } 
-    else if (ps === str) {
+    };
+    else if (ps == str) {
       return obj;
     }
   }
